@@ -34,7 +34,12 @@
                <img src="{% static 'assets/img/nav/icone_pb.png' %}" alt="My image">
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#Rechercher">Rechercher</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#Rechercher">
+                            <form id="user-text-form">
+                        <p>
+                    <input type="text" id="userText" name="userText" placeholder="Produit">
+                    <input type="submit" value="Rechercher">
+                     </p></li>
                         <li class="nav-item"><a class="nav-link" href="#Mon compte">Mon compte</a></li>
                         <li class="nav-item"><a class="nav-link" href="#Mes aliments">Mes aliments</a></li>
                         <li class="nav-item"><a class="nav-link" href="#Déconnexion">Déconnexion</a></li>

@@ -1,2 +1,15 @@
-.divider { text-align: justify; }
+#contact {
+        display: flex;
+        background-color:rgb(232, 167, 93);
+        border-radius: 10px;
+        padding-bottom: 1%;
+        padding-top: 1%;
+        padding-right: 1%;
+        padding-left: 1%;}
+
+.clients {
+        display: flex;
+        margin-left: auto;
+        }
+
 

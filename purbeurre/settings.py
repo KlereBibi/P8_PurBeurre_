@@ -133,3 +133,4 @@ STATIC_ROOT = 'static_assets/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "authentification.User"
+AUTHENTICATION_BACKENDS = ['authentification.backend.EmailBackend']

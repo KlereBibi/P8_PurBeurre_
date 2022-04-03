@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<header class="masthead" id="content" style="background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url('{% static 'products/assets/img/background/home_page.jpg' %}'); background-size:cover;">
+<div class="container px-4 px-lg-5 h-100">
+                <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+                    <div class="col-lg-8 align-self-end ">
+                        <h1 class="title text-white font-weight-bold message">Login</h1>
+                      <form action="{% url 'authentification:login' %}" method="post" class="message">
+                        {% csrf_token %}
+                         {{ form.as_p }}
+                      <button type="submit" id="submit" class="message">Login</button>
+                      </form>
+                    </div>
+                </div>
+</div>
+
+
+</header>
+{% endblock %}

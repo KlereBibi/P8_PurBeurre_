@@ -4,10 +4,14 @@ from django import forms
 
 
 class RegisterForm(UserCreationForm):
+    email = forms.EmailField(label="Email")
+    fullname = forms.CharField(label="First name")
+    fullname2 = forms.CharField(label="Last name")
+
     class Meta:
         model = get_user_model()
-        fields = ('email', 'username', 'password1', 'password2')
+        fields = ('email', 'fullname', 'fullname2', 'password1', 'password2')
 
 
 class LoginForm(AuthenticationForm):
-    username = forms.CharField(label='Email / Username')
+    username = forms.CharField(label='Email')

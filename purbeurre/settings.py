@@ -84,7 +84,6 @@ DATABASES = {
         'PASSWORD': '184300',
         'HOST': 'localhost',
         'PORT': '5432',
-
     }
 }
 
@@ -134,3 +133,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "authentification.User"
 AUTHENTICATION_BACKENDS = ['authentification.backend.EmailBackend']
+LOGIN_URL = "/authentification/login"

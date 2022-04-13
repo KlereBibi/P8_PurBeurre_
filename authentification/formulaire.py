@@ -5,12 +5,13 @@ from django import forms
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(label="Email")
+    username = forms.CharField(label="username")
     first_name = forms.CharField(label="First name")
     last_name = forms.CharField(label="Last name")
 
     class Meta:
         model = get_user_model()
-        fields = ('email', 'first_name', 'last_name', 'password1', 'password2')
+        fields = ('email', 'username', 'first_name', 'last_name', 'password1', 'password2')
 
 
 class LoginForm(AuthenticationForm):

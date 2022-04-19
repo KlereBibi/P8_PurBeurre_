@@ -2,6 +2,10 @@
 {% load static %}
 {% load bootstrap5 %}
 
+{% block add_css %}
+<link href="{% static 'authentification/css/register.css' %}" rel="stylesheet" />
+{% endblock add_css %}
+
 {% block content %}
 <header class="masthead" id="content"
         style="background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url('{% static 'authentification/assets/img/background/home_page.jpg' %}'); background-size:cover;">
@@ -11,7 +15,7 @@
                 <h1 class="title text-white font-weight-bold message">Enregistrement</h1>
                 <form action="{% url 'authentification:register' %}" method="post" class="message form title text-white font-weight-bold">
                     {% csrf_token %}
-                    {% bootstrap_form form layout="horizontal" size="small" label_class="form-label col-md-3" %}
+                    {{ form.as_p }}
                     <button type="submit" id="submit" class="message btn btn-outline-warning my-2 my-sm-0">
                         Soumettre
                     </button>

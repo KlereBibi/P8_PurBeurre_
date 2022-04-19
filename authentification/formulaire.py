@@ -5,7 +5,7 @@ from django import forms
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(label="Email")
-    username = forms.CharField(label="username")
+    username = forms.CharField(label="Username")
     first_name = forms.CharField(label="First name")
     last_name = forms.CharField(label="Last name")
 

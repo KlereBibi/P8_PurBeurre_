@@ -1,0 +1,11 @@
+.helptext {display: block;
+font-style: italic;
+font-size: 12px;
+padding-top : 1%}
+
+#id_email {border-radius: 5px;}
+#id_username {border-radius: 5px}
+#id_first_name {border-radius: 5px}
+#id_last_name {border-radius: 5px}
+#id_password1 {border-radius: 5px}
+#id_password2 {border-radius: 5px}

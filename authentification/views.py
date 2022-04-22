@@ -15,8 +15,8 @@ class RegisterView(generic.CreateView):
     success_url = reverse_lazy('authentification:login')
 
 
-class LogoutView(auth_views.LogoutView):
-    template_name = 'authentification/logout.html'
+class TemplateView(auth_views.TemplateView):
+    template_name="authentification/account.html"
 
 
 

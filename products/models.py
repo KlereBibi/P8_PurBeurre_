@@ -8,12 +8,6 @@ class Product(models.Model):
     calories = models.CharField(max_length=100)
     picture = models.TextField(max_length=200)
 
-    @classmethod
-    def create(cls, name, nutriscore, url, calories, picture):
-        product = cls(name=name, nutriscore=nutriscore, url=url, calories=calories, picture=picture)
-        # do something with the book
-        return product
-
     def __str__(self):
         return self.pk
 

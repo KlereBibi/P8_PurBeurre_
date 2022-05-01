@@ -50,18 +50,17 @@ class ApiManager:
                            "categories": item['categories'].split(','),
                            "brands": item['brands'].split(','),
                            "stores": item['stores'].split(',')}
-                            products_list.append(product)
+                products_list.append(product)
 
-                newprod = Product.create(
-                    item['product_name_fr'],
-                    item['nutriscore_grade'],
-                    item['url'],
-                    item['image_front_url'],
-                    item['energy-kcal_100g'])
+                newprod = Product(
+                     item['product_name_fr'],
+                     item['nutriscore_grade'],
+                     item['url'],
+                     item['image_front_url'],
+                     item['energy-kcal_100g'])
                 products_obj.append(newprod)
 
-        except KeyError:
-            continue
+            except KeyError:
+                continue
 
-
-print(products_obj)
+        print(products_list)

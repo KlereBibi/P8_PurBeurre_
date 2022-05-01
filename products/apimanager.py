@@ -1,12 +1,11 @@
 import requests
 import json
-from models import Product
+from products.models import Product
 
 
 class ApiManager:
     """Class used to query the API, retrieve data,
        process it and send it to the product manager."""
-
 
     def search_categories(self):
         """Method querying the OpenFoodFac API to retrieve categories.
@@ -35,7 +34,8 @@ class ApiManager:
         - products (liste) : list of product with ID = None."""
 
         products_saved = []
-        products = []
+        products_list = []
+        products_obj = []
         for element in self.search_categories():
             products_find = requests. \
                 get("https://fr.openfoodfacts.org/cgi/search.pl?action=process"
@@ -44,29 +44,24 @@ class ApiManager:
             result = json.loads(products_find.text)
             products_saved += result['products']
 
-        liste_products = []
         for item in products_saved:
             try:
-                product = (item['product_name_fr'], item['categories'], item['brands'], item['stores'])
-                liste_products.append(product)
-            except KeyError:
-                continue
+                product = {"name": item['product_name_fr'],
+                           "categories": item['categories'].split(','),
+                           "brands": item['brands'].split(','),
+                           "stores": item['stores'].split(',')}
+                            products_list.append(product)
 
-        print(liste_products)
-
-        for item in products_saved:
-            try:
-                newprod = Product(
+                newprod = Product.create(
                     item['product_name_fr'],
                     item['nutriscore_grade'],
                     item['url'],
                     item['image_front_url'],
-                    item['energy-kcal_100g']
-                )
-                products.append(newprod)
-            except KeyError:
-                continue
-        return products
+                    item['energy-kcal_100g'])
+                products_obj.append(newprod)
+
+        except KeyError:
+            continue
 
 
-
+print(products_obj)

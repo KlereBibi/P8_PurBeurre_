@@ -5,7 +5,7 @@ class Product(models.Model):
     name = models.CharField(max_length=100, unique=True)
     nutriscore = models.CharField(max_length=1)
     url = models.URLField(max_length=200)
-    calories = models.CharField(max_length=100)
+    calories = models.TextField(max_length=200)
     picture = models.TextField(max_length=200)
 
     def __str__(self):

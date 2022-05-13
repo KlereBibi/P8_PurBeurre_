@@ -9,7 +9,7 @@ class Product(models.Model):
     picture = models.TextField(max_length=200)
 
     def __str__(self):
-        return self.pk
+        return self.name
 
 
 class Brand(models.Model):
@@ -17,7 +17,7 @@ class Brand(models.Model):
     products = models.ManyToManyField(Product, related_name='brands')
 
     def __str__(self):
-        return self.pk
+        return self.name
 
 
 class Category(models.Model):
@@ -25,7 +25,7 @@ class Category(models.Model):
     products = models.ManyToManyField(Product, related_name='categories')
 
     def __str__(self):
-        return self.pk
+        return self.name
 
 
 class Store(models.Model):
@@ -33,4 +33,4 @@ class Store(models.Model):
     products = models.ManyToManyField(Product, related_name='stores')
 
     def __str__(self):
-        return self.pk
+        return self.name

@@ -4,15 +4,13 @@ import json
 from products.models import Product, Category, Brand, Store
 
 
-class ApiManager:
-    """Class used to query the API, retrieve data,
-       process it and send it to the product manager."""
+class Command(BaseCommand):
 
-    def search_categories(self):
+    def handle(self, *args, **options):
         """Method querying the OpenFoodFac API to retrieve categories.
-        Methode sort them by increasing popularity.
-        returns:
-        - name_categories (liste) : list name of the first six categories"""
+                Methode sort them by increasing popularity.
+                returns:
+                - name_categories (liste) : list name of the first six categories"""
 
         categories_find = requests. \
             get("https://fr.openfoodfacts.org/categories.json")
@@ -24,23 +22,13 @@ class ApiManager:
         for element in six_categories:
             name_categories.append(element['name'])
 
-        return name_categories
-
-    def search_products(self):
-
-        """ Method requesting the OpenFoodFac API
-        to find the products with the category list.
-        The method registers products with the Product class.
-        returns:
-        - products (liste) : list of product with ID = None."""
-
         products_api = []
         category_obj = []
         products_obj = []
         store_obj = []
         brand_obj = []
 
-        for element in self.search_categories():
+        for element in name_categories:
             products_find = requests. \
                 get("https://fr.openfoodfacts.org/cgi/search.pl?action=process"
                     "&tagtype_0=categories&tag_contains_0=contains&"
@@ -52,11 +40,11 @@ class ApiManager:
             try:
 
                 newprod = Product(
-                     name=item['product_name_fr'],
-                     nutriscore=item['nutriscore_grade'],
-                     url=item['url'],
-                     calories=item['image_nutrition_url'],
-                     picture=item['image_front_url'])
+                    name=item['product_name_fr'],
+                    nutriscore=item['nutriscore_grade'],
+                    url=item['url'],
+                    calories=item['image_nutrition_url'],
+                    picture=item['image_front_url'])
                 products_obj.append(newprod)
 
                 for element in item['categories'].split(','):
@@ -125,10 +113,3 @@ class ApiManager:
                     saved_brand = next(filter(lambda bra: bra[1] == brand, brand_db), None)
                     if saved_brand:
                         productbrand.append((product[0], saved_brand[0]))
-
-
-class Command(BaseCommand):
-
-    def handle(self, *args, **options):
-        apimanager = ApiManager()
-        apimanager.search_products()

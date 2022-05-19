@@ -22,7 +22,7 @@ class Brand(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    products = models.ManyToManyField(Product, related_name='categories')
+    products = models.ManyToManyField(Product, through='CategoryProduct')
 
     def __str__(self):
         return self.name
@@ -34,3 +34,8 @@ class Store(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class CategoryProduct(models.Model):
+    id_product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    id_category = models.ForeignKey(Category, on_delete=models.CASCADE)

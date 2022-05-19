@@ -1,16 +1,12 @@
 from django.core.management.base import BaseCommand
 import requests
 import json
-from products.models import Product, Category, Brand, Store
+from products.models import Product, Category, Brand, Store, CategoryProduct
 
 
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
-        """Method querying the OpenFoodFac API to retrieve categories.
-                Methode sort them by increasing popularity.
-                returns:
-                - name_categories (liste) : list name of the first six categories"""
 
         categories_find = requests. \
             get("https://fr.openfoodfacts.org/categories.json")
@@ -98,13 +94,14 @@ class Command(BaseCommand):
         productcategory = []
         productstore = []
         productbrand = []
+
         for product in product_db:
             non_saved_product = next(filter(lambda prod: prod['name'] == product[1], product_non_saved), None)
             if non_saved_product:
                 for category in non_saved_product['categories']:
                     saved_category = next(filter(lambda cat: cat[1] == category, category_db), None)
                     if saved_category:
-                        productcategory.append((product[0], saved_category[0]))
+                        productcategory.append(CategoryProduct(id_product=product[0], id_category=saved_category[0]))
                 for store in non_saved_product['stores']:
                     saved_store = next(filter(lambda sto: sto[1] == store, store_db), None)
                     if saved_store:
@@ -113,3 +110,6 @@ class Command(BaseCommand):
                     saved_brand = next(filter(lambda bra: bra[1] == brand, brand_db), None)
                     if saved_brand:
                         productbrand.append((product[0], saved_brand[0]))
+
+
+        CategoryProduct.objects.bulk_create(productcategory)

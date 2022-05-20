@@ -12,14 +12,6 @@ class Product(models.Model):
         return self.name
 
 
-class Brand(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-    products = models.ManyToManyField(Product, related_name='brands')
-
-    def __str__(self):
-        return self.name
-
-
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
     products = models.ManyToManyField(Product, through='CategoryProduct')
@@ -28,14 +20,6 @@ class Category(models.Model):
         return self.name
 
 
-class Store(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-    products = models.ManyToManyField(Product, related_name='stores')
-
-    def __str__(self):
-        return self.name
-
-
 class CategoryProduct(models.Model):
-    id_product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    id_category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)

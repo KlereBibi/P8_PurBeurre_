@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+        <div>
+            {% if products.count > 0 %}
+            {% for product in products %}
+            <img src="{{product.picture}}"></img>
+            {{ product.name }}
+            <a href="{% url 'products:food' product_id=product.id %}"> voir détail de l'aliment </a>
+            {% endfor %}
+            {% elif products.count == 0 %}
+            <p>Aucun substitut n'a été trouvé</p>
+            {% endif %}
+        </div>
+
+{% endblock %}

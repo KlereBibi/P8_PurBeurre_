@@ -1,0 +1,11 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<div>
+    {{product.name}}
+    {{product.nutriscore}}
+    <a href={{product.url}}>Lien OpenFoodFact</a>
+    <img src="{{product.calories}}"></img>
+    <img src="{{product.picture}}"></img>
+</div>
+{% endblock %}

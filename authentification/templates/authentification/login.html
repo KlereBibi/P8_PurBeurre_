@@ -3,7 +3,7 @@
 {% load django_bootstrap5 %}
 
 {% block add_css %}
-<link href="{% static 'authentification/css/register.css' %}" rel="stylesheet" />
+<link href="{% static 'authentification/css/register.css' %}" rel="stylesheet"/>
 {% endblock add_css %}
 
 {% block content %}
@@ -12,8 +12,9 @@
         <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
             <div class="col-lg-4">
                 <h1 class="title text-white font-weight-bold message">Authentification</h1>
-                <form action="{% url 'authentification:login' %}" method="post" class="message form title text-white font-weight-bold">
-                     {% csrf_token %}
+                <form action="{% url 'authentification:login' %}" method="post"
+                      class="message form title text-white font-weight-bold">
+                    {% csrf_token %}
                     {% bootstrap_form form layout="floating" %}
                     <div class="col-ms-6">
                         <div class="row">
@@ -23,7 +24,8 @@
                                 </button>
                             </div>
                             <div class="col-md-6">
-                                <a class="message btn btn-outline-warning my-2 my-sm-0" href="{% url 'authentification:register' %}">S'enregistrer</a>
+                                <a class="message btn btn-outline-warning my-2 my-sm-0"
+                                   href="{% url 'authentification:register' %}">S'enregistrer</a>
                             </div>
                         </div>
                     </div>

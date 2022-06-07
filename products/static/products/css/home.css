@@ -12,4 +12,65 @@
         margin-left: auto;
         }
 
+.backgroundProduct {
+background-color: black
+}
 
+.text{
+padding-top: 10rem;
+padding-bottom: calc(10rem - 4.5rem);
+font-family: "Open Sans", sans-serif;
+color:white;
+text-align: center}
+
+.topright {
+  position: absolute;
+  top: 2%;
+  right: 25%;
+  font-size: 25px;
+  background-color: white;
+}
+
+.circle{
+    margin:10px;
+    width:30px;
+    background-image: white;
+    height:30px;
+    text-align:center;
+    border-radius:100px;
+    <strong>line-height: 90px; /* 100 - 10 */</strong>
+}
+
+.container {
+  position: relative;
+}
+
+.backgroundFood {
+background-color: black
+    }
+
+.textFood{
+font-family: "Open Sans", sans-serif;
+color:white;
+text-align: center}
+
+ .picture{
+	width:auto;
+	max-height: 200px;
+ background-position: center;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-size: cover;}
+
+.textOFF {
+font-family: "Scope One", sans-serif;
+text-align: center;
+}
+
+.bordure {
+padding-top : 8px;
+padding-bottom : 8px;
+padding-right : 8 px;
+padding-left: 8px;
+border: 1px solid black;
+}

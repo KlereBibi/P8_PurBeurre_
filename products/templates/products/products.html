@@ -1,18 +1,34 @@
 {% extends 'main.html' %}
 {% load static %}
 
+{% block add_css %}
+<link href="{% static 'products/css/home.css' %}" rel="stylesheet"/>
+{% endblock add_css %}
+
 {% block content %}
+<div class="backgroundProduct text">
+    <p> Produit recherché</p>
+</div>
 
-        <div>
-            {% if products.count > 0 %}
-            {% for product in products %}
-            <img src="{{product.picture}}"></img>
-            {{ product.name }}
+    <div class="row message text-center">
+        <p>Vous pouvez remplacer votre produit par:</p>
+        {% if products %}
+        {% for product in products %}
+        <div class="col-4">
+            <h5 class="card-title message">{{ product.name }}</h5><br>
+            <div class="container">
+                <img src="{{product.picture}}" class="picture">
+                <div class="topright circle">
+                    <p>{{ product.nutriscore }}</p>
+                </div>
+            </div>
+            <br>
             <a href="{% url 'products:food' product_id=product.id %}"> voir détail de l'aliment </a>
-            {% endfor %}
-            {% elif products.count == 0 %}
-            <p>Aucun substitut n'a été trouvé</p>
-            {% endif %}
         </div>
-
+        {% endfor %}
+        {% else %}
+        <p>Aucun substitut n'a été trouvé</p>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

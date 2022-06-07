@@ -43,7 +43,7 @@
                 <li class="nav-item">
                     <form id="user-text-form" class="message" method="POST" action="{% url 'products:search' %}">
                         {% csrf_token %}
-                       {% bootstrap_form search_form %}
+                       {% bootstrap_form search_form layout='inline' %}
                         <input class="message btn btn-outline-warning my-2 my-sm-0" type="submit" value="Chercher">
                     </form>
                 </li>

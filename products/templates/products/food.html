@@ -1,11 +1,31 @@
 {% extends 'main.html' %}
 {% load static %}
+
+{% block add_css %}
+<link href="{% static 'products/css/home.css' %}" rel="stylesheet"/>
+{% endblock add_css %}
+
 {% block content %}
-<div>
-    {{product.name}}
-    {{product.nutriscore}}
-    <a href={{product.url}}>Lien OpenFoodFact</a>
-    <img src="{{product.calories}}"></img>
-    <img src="{{product.picture}}"></img>
+
+<div class="backgroundFood textFood">
+    <img src="{{product.picture}}" style="width:10%" class="picture">
+    <p>{{product.name}}</p>
+</div>
+
+
+<div class="container">
+    <div class="row message text-center">
+        <div class="col-sm-6">
+            <p>Nutriscore</p>
+            {{product.nutriscore}}
+        </div>
+        <div class="col-sm-6">
+            <p>Repères nutrionnels pour 100g.</p>
+            <img src="{{product.calories}}" width="30%"></img>
+        </div>
+    </div>
+</div>
+<div class="textOFF">
+    <a href={{product.url}} class="bordure">Voir la fiche d'Openfoodfacts</a>
 </div>
 {% endblock %}

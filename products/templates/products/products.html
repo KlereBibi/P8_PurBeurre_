@@ -7,28 +7,28 @@
 
 {% block content %}
 <div class="backgroundProduct text">
-    <p> Produit recherché</p>
+    <p> Produit correspondant à votre recherche</p>
 </div>
-
-    <p>Vous pouvez remplacer votre produit par:</p>
-<div class="col-4">
-        <div class="card-columns">
-            <div class="card-body">
+<div class="row">
     {% if products %}
     {% for product in products %}
-
-                <img src="{{product.picture}}" class="picture">
-                <div class="topright circle">
-                    <p>{{ product.nutriscore }}</p>
-                </div>
-                <p class="message">{{ product.name }}</p>
+    <div class="col-md-4">
+        <img class="card-img-top">
+        <div class="card text-black ">
+            <img src="{{product.picture}}" alt="Card image cap" class="picture">
+            <div class="card-img-overlay">
+                <p class="card-text text-end">{{ product.nutriscore }}</p>
             </div>
-            <a href="{% url 'products:food' product_id=product.id %}"> voir détail de l'aliment </a>
         </div>
-        {% endfor %}
-        {% else %}
-        <p>Aucun substitut n'a été trouvé</p>
-        {% endif %}
+        <div class="card-body">
+            <p class="message">{{ product.name }}</p>
+        </div>
+        <a href="{% url 'products:food' product_id=product.id %}" class="btn btn-primary"> voir détail de
+            l'aliment </a>
     </div>
+    {% endfor %}
 </div>
+{% else %}
+<p>Aucun substitut n'a été trouvé</p>
+{% endif %}
 {% endblock %}

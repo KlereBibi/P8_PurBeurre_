@@ -16,7 +16,7 @@ class RegisterView(generic.CreateView):
 
 
 class TemplateView(auth_views.TemplateView):
-    template_name="authentification/account.html"
+    template_name = "authentification/account.html"
 
 
 

@@ -14,7 +14,7 @@ class Product(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    products = models.ManyToManyField(Product, through='CategoryProduct')
+    products = models.ManyToManyField(Product, through='CategoryProduct', related_name="categories")
 
     def __str__(self):
         return self.name

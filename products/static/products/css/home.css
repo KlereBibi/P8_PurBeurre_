@@ -55,12 +55,9 @@ color:white;
 text-align: center}
 
  .picture{
-	width:auto;
-	max-height: 200px;
- background-position: center;
-  background-repeat: repeat;
-  background-attachment: scroll;
-  background-size: cover;}
+	max-width:auto;
+	max-height:300px;
+    object-fit: contain;}
 
 .textOFF {
 font-family: "Scope One", sans-serif;
@@ -73,13 +70,4 @@ padding-bottom : 8px;
 padding-right : 8 px;
 padding-left: 8px;
 border: 1px solid black;
-}
-
-.card-columns {
-  @include media-breakpoint-only(lg) {
-    column-count: 4;
-  }
-  @include media-breakpoint-only(xl) {
-    column-count: 5;
-  }
 }

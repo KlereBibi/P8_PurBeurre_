@@ -21,8 +21,6 @@ class Command(BaseCommand):
         products_api = []
         category_obj = []
         products_obj = []
-        store_obj = []
-        brand_obj = []
 
         for element in name_categories:
             products_find = requests. \

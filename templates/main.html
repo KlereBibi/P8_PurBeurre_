@@ -29,6 +29,29 @@
     {% block add_css %}{% endblock add_css %}
 </head>
 <body id="page-top">
+{% if messages %}
+    <div class="position-absolute end-0 top-0 z-index-fixed mt-3 me-3">
+        {% for message in messages %}
+            <!-- Then put toasts within -->
+            <div class="toast fade show bg-light text-{{ message.tags }}"
+                 role="alert" aria-live="polite" data-bs-autohide="true" aria-atomic="true" data-bs-delay="6000">
+                <div class="toast-header text-{{ message.tags }} border-0">
+                    <i class="me-4 fa-light {% if message.tags == 'danger' %}fa-circle-exclamation{% elif message.tags == 'success' %}fa-circle-check{% elif message.tags == 'info' %}fa-square-info{% elif message.tags == 'warning' %}fa-triangle-exclamation{% endif %} flex-shrink-0 me-2"
+                       style="font-size: 1.2rem"></i>
+                    <strong class="me-auto">
+                        {% if message.tags == 'danger' %}Erreur{% elif message.tags == 'success' %}
+                            Succes{% endif %}</strong>
+                    <button type="button" class="btn-close btn-close" data-bs-dismiss="toast"
+                            aria-label="Close">
+                    </button>
+                </div>
+                <div class="toast-body">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
 <!-- Navigation-->
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">

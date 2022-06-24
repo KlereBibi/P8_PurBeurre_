@@ -1,4 +1,5 @@
 from django.db import models
+from authentification.models import User
 
 
 class Product(models.Model):
@@ -23,3 +24,8 @@ class Category(models.Model):
 class CategoryProduct(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+
+class Substitute(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="substitute")

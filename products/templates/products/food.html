@@ -28,4 +28,35 @@
 <div class="textOFF">
     <a href={{product.url}} class="bordure">Voir la fiche d'Openfoodfacts</a>
 </div>
+
+<div>
+   <div class="backgroundProduct text">
+    <p> Vous pouvez remplacer votre produit par:</p>
+</div>
+<div class="row">
+    {% if substitutes %}
+    {% for substitute in substitutes %}
+    <div class="col-md-4">
+        <img class="card-img-top">
+        <div class="card text-black ">
+            <img src="{{substitute.picture}}" alt="Card image cap" class="picture">
+            <div class="card-img-overlay">
+                <p class="card-text text-end">{{ substitute.nutriscore }}</p>
+            </div>
+        </div>
+        <div class="card-body">
+            <p class="message">{{ substitute.name }}</p>
+        </div>
+        <a href="{% url 'products:food' product_id=substitute.id %}" class="btn btn-primary"> voir détail de
+            l'aliment </a>
+         <a href="{% url 'products:save' product_id=substitute.id original_product_id=product.id %}" class="btn btn-primary">Sauvegarder </a>
+    </div>
+
+    {% endfor %}
+</div>
+{% else %}
+<p>Aucun substitut n'a été trouvé</p>
+{% endif %}
+
+</div>
 {% endblock %}

@@ -7,6 +7,7 @@ from django.db.models import Count, Q
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.contrib import messages
+from django.db import IntegrityError
 
 
 def home(request):
@@ -25,7 +26,6 @@ def search_product(request):
 
 def food(request, product_id):
     product_detail = Product.objects.get(pk=product_id)
-    # substitutes = Product.objects.filter(nutriscore="a")[:5]
     substitutes = Product.objects.annotate(
         common_categories_nb=Count(
             "categories",
@@ -43,9 +43,17 @@ def food(request, product_id):
 
     return render(request, "products/food.html", context={"product": product_detail, "substitutes": substitutes})
 
+
 @login_required
 def save_substitute(request, product_id, original_product_id):
     product = Product.objects.get(pk=product_id)
-    Substitute.objects.create(product=product, user=request.user)
-    messages.success(request, "Le produit a bien été ajouté à vos favoris")
+    try:
+        Substitute.objects.create(product=product, user=request.user)
+        messages.success(request, "Le produit a bien été ajouté à vos favoris")
+    except IntegrityError:
+        messages.error(request, "Le produit est déjà dans vos favoris")
     return redirect('products:food', product_id=original_product_id)
+
+
+def user_food(request):
+    return render(request, "products/userfood.html")

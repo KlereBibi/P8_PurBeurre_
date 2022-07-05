@@ -30,11 +30,11 @@
 </head>
 <body id="page-top">
 {% if messages %}
-    <div class="position-absolute end-0 top-0 z-index-fixed mt-3 me-3">
+    <div class="position-absolute end-50 top-50 z-index-fixed mt-3 me-3">
         {% for message in messages %}
             <!-- Then put toasts within -->
             <div class="toast fade show bg-light text-{{ message.tags }}"
-                 role="alert" aria-live="polite" data-bs-autohide="true" aria-atomic="true" data-bs-delay="6000">
+                 role="alert" aria-live="polite" data-bs-autohide="true" aria-atomic="true" data-bs-delay="1000">
                 <div class="toast-header text-{{ message.tags }} border-0">
                     <i class="me-4 fa-light {% if message.tags == 'danger' %}fa-circle-exclamation{% elif message.tags == 'success' %}fa-circle-check{% elif message.tags == 'info' %}fa-square-info{% elif message.tags == 'warning' %}fa-triangle-exclamation{% endif %} flex-shrink-0 me-2"
                        style="font-size: 1.2rem"></i>
@@ -73,7 +73,7 @@
                 {% if user.is_authenticated %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'authentification:account' %}"><i
                         class="fa fa-user"></i></a></li>
-                <li class="nav-item"><a class="nav-link" href="#Mes aliments"><img
+                <li class="nav-item"><a class="nav-link" href="{% url 'products:userfood' %}"><img
                         src="{% static 'assets/img/nav/carotte.png' %}" height="30" width="40" alt="carrot"></a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'authentification:logout' %}"><i
                         class="fa fa-sign-out"></i></a></li>
@@ -81,7 +81,6 @@
                 <li class="nav-item"><a class="nav-link" href="{% url 'authentification:login' %}"><i
                         class="fa fa-user"></i></a></li>
                 {% endif %}
-
 
             </ul>
         </div>

@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block add_css %}
+<link href="{% static 'products/css/home.css' %}" rel="stylesheet"/>
+{% endblock add_css %}
+
+{% block content %}
+
+<div class="backgroundFood textFood dimension">
+        <div class="message text-center">
+            Mes substituts sauvegardés
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    {% if user.substitute %}
+    {% for substitute in user.substitute.all %}
+    <div class="col-md-4">
+        <img class="card-img-top">
+        <div class="card text-black ">
+            <img src="{{substitute.product.picture}}" alt="Card image cap" class="picture">
+            <div class="card-img-overlay">
+                <p class="card-text text-end">{{ substitute.product.nutriscore }}</p>
+            </div>
+        </div>
+        <div class="card-body">
+            <p class="message">{{ substitute.product.name }}</p>
+        </div>
+        <a href="{% url 'products:food' product_id=substitute.id %}" class="btn btn-primary"> voir détail de
+            l'aliment </a>
+    </div>
+
+    {% endfor %}
+</div>
+{% else %}
+<p>Aucun substitut trouvé</p>
+{% endif %}
+
+{% endblock %}

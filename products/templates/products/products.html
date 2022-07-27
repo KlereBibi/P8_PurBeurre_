@@ -6,15 +6,17 @@
 {% endblock add_css %}
 
 {% block content %}
+<div class="bgcouleur" id="header"></div>
+
 <div class="backgroundProduct text">
-    <p> Produit correspondant à votre recherche</p>
+    <p> Produits correspondant à votre recherche</p>
 </div>
 <div class="row">
     {% if products %}
     {% for product in products %}
     <div class="col-md-4">
         <img class="card-img-top">
-        <div class="card text-black ">
+        <div class="card text-black">
             <img src="{{product.picture}}" alt="Card image cap" class="picture">
             <div class="card-img-overlay">
                 <p class="card-text text-end">{{ product.nutriscore }}</p>

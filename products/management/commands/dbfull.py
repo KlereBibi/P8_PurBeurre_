@@ -1,7 +1,7 @@
-from django.core.management.base import BaseCommand
-import requests
 import json
+import requests
 from products.models import Product, Category, CategoryProduct
+from django.core.management.base import BaseCommand
 
 
 class Command(BaseCommand):
@@ -13,9 +13,9 @@ class Command(BaseCommand):
         read = json.loads(categories_find.text)
         categories = read['tags']
         categories.sort(key=lambda x: x["products"], reverse=True)
-        six_categories = categories[:6]
+        all_categories = categories[:20]
         name_categories = []
-        for element in six_categories:
+        for element in all_categories:
             name_categories.append(element['name'])
 
         products_api = []

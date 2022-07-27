@@ -13,8 +13,11 @@
         }
 
 .backgroundProduct {
-background-color: black
-}
+        background-image: url("../assets/img/background/products.jpg") ;
+        padding-top: 10rem;
+        padding-bottom: calc(10rem - 4.5rem);
+        background-size: cover;
+  }
 
 .text{
 padding-top: 10rem;
@@ -45,14 +48,8 @@ text-align: center}
   position: relative;
 }
 
-.backgroundFood {
-background-color: grey
-    }
-
 .textFood{
-font-family: "Open Sans", sans-serif;
-color:white;
-text-align: center}
+    padding-bottom: 25px; }
 
  .picture{
 	max-width:auto;
@@ -75,3 +72,17 @@ border: 1px solid black;
 .dimension {
 height: 150px;
 }
+
+.bgcouleur { background-color: rgb(52, 90, 97)}
+.product { background-color: rgb(232, 167, 93)}
+
+#nameP {
+    font-family: "Scope One", sans-serif;
+    display: flex;
+    align-items: center;
+}
+.bas { font-family: "Scope One", sans-serif;
+    text-align: center;
+    padding-bottom: 25px; }
+
+#header { padding: 40px;}

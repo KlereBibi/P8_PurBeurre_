@@ -7,11 +7,21 @@
 
 {% block content %}
 
-<div class="backgroundFood textFood">
-    <img src="{{product.picture}}" style="width:10%" class="picture">
-    <p>{{product.name}}</p>
-</div>
+<div class="bgcouleur" id="header"></div>
 
+<div class="product">
+    <div class="row" id="nameP">
+        <div class="col-sm-4 text-center">
+            <img src="{{product.picture}}" style="width:30%" class="picture">
+        </div>
+        <div class="col-sm-4 text-center">
+            <p>{{product.name}}</p>
+        </div>
+        <div class="col-sm-4 text-center">
+            <img src="{{product.picture}}" style="width:30%" class="picture">
+        </div>
+    </div>
+</div>
 
 <div class="container">
     <div class="row message text-center">
@@ -24,13 +34,13 @@
             <img src="{{product.calories}}" width="30%"></img>
         </div>
     </div>
-</div>
-<div class="textOFF">
-    <a href={{product.url}} class="bordure">Voir la fiche d'Openfoodfacts</a>
+    <div class="bas">
+        <a href={{product.url}} class="bordure">Voir la fiche d'Openfoodfacts</a>
+    </div>
 </div>
 
-<div>
-   <div class="backgroundProduct text">
+
+<div class="backgroundProduct text">
     <p> Vous pouvez remplacer votre produit par:</p>
 </div>
 <div class="row">
@@ -49,9 +59,9 @@
         </div>
         <a href="{% url 'products:food' product_id=substitute.id %}" class="btn btn-primary"> voir détail de
             l'aliment </a>
-         <a href="{% url 'products:save' product_id=substitute.id original_product_id=product.id %}" class="btn btn-primary">Sauvegarder </a>
+        <a href="{% url 'products:save' product_id=substitute.id original_product_id=product.id %}"
+           class="btn btn-primary">Sauvegarder </a>
     </div>
-
     {% endfor %}
 </div>
 {% else %}

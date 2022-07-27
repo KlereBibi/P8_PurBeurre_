@@ -64,10 +64,10 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto my-2 my-lg-0">
                 <li class="nav-item">
-                    <form id="user-text-form" class="message" method="POST" action="{% url 'products:search' %}">
+                    <form id="user-text-form" class="message pos col-6" method="POST" action="{% url 'products:search' %}">
                         {% csrf_token %}
-                       {% bootstrap_form search_form layout='inline' %}
-                        <input class="message btn btn-outline-warning my-2 my-sm-0" type="submit" value="Chercher">
+                        {% bootstrap_form search_form layout='inline' %}
+                        <input class="message btn btn-outline-warning my-2 my-sm-0 " type="submit" value="Chercher">
                     </form>
                 </li>
                 {% if user.is_authenticated %}
@@ -95,7 +95,7 @@
 
 <footer class="bg-light py-5">
     <div class="container px-4 px-lg-5">
-        <div class="small text-center text-muted">Copyright &copy; 2021 - Company Name</div>
+        <div class="small text-center text-muted">Copyright &copy; 2022 - PurBeurre</div>
     </div>
 </footer>
 

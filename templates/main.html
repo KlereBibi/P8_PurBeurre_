@@ -30,7 +30,7 @@
 </head>
 <body id="page-top">
 {% if messages %}
-    <div class="position-absolute end-50 top-50 z-index-fixed mt-3 me-3">
+    <div class="position-absolute end-0 top-0 z-index-fixed mt-3 me-3" id="mess">
         {% for message in messages %}
             <!-- Then put toasts within -->
             <div class="toast fade show bg-light text-{{ message.tags }}"

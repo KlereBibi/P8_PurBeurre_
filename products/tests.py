@@ -1,19 +1,29 @@
+"""module containing products application tests"""
+
 from django.test import TestCase
 from django.test import Client
-from products.models import Product
 from products.models import Category
 from products.models import CategoryProduct
+from products.models import Product
 
 
 class TestViews(TestCase):
 
+    """class to test the different feature about products"""
+
     def test_home_page(self):
+
+        """test about template home page and connect home page """
+
         c = Client()
         response = c.get('')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'products/home.html')
 
     def test_food_page(self):
+
+        """test about template success template food page with a product initialize """
+
         c = Client()
         product = Product.objects.create(name='Pain', nutriscore='d', url='pain.fr', calories='5', picture='pain.fr')
         response = c.get('/food/{}'.format(product.pk))
@@ -21,16 +31,25 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, 'products/food.html')
 
     def test_food_page_product_ok(self):
+
+        """checks the correct information contained in the template of product """
+
         c = Client()
         product = Product.objects.create(name='Pain', nutriscore='d', url='pain.fr', calories='5', picture='pain.fr')
         response = c.get('/food/{}'.format(product.pk))
         self.assertEqual(response.context['product'], product)
 
     def test_food_page_substitute_ok(self):
+
+        """checks the correct information contained in the template of product about the search for a substitute"""
+
         c = Client()
-        product_user = Product.objects.create(name='Pain', nutriscore='d', url='pain.fr', calories='5', picture='pain.fr')
-        product_good = Product.objects.create(name='Pain Céréale', nutriscore='b', url='paincereal.fr', calories='3', picture='paincereal.fr')
-        product_bad = Product.objects.create(name='Nutella', nutriscore='e', url='nut.fr', calories='20', picture='nut.fr')
+        product_user = Product.objects.create(name='Pain', nutriscore='d', url='pain.fr',
+                                              calories='5', picture='pain.fr')
+        product_good = Product.objects.create(name='Pain Céréale', nutriscore='b', url='paincereal.fr',
+                                              calories='3', picture='paincereal.fr')
+        product_bad = Product.objects.create(name='Nutella', nutriscore='e', url='nut.fr',
+                                             calories='20', picture='nut.fr')
         cat1 = Category.objects.create(name='boulangerie')
         cat2 = Category.objects.create(name='chocolat')
         cat3 = Category.objects.create(name='farine')
@@ -48,17 +67,23 @@ class TestViews(TestCase):
         self.assertEqual(substitute_name, product_substitute_good)
 
     def test_substitute_page(self):
+
+        """test about substitute page success with  initialized information"""
+
         c = Client()
         c.login(email='test@gmail.com', password='test@.test')
         product = Product.objects.create(name='Pain', nutriscore='d', url='pain.fr', calories='5', picture='pain.fr')
-        original_product_id = Product.objects.create(name='rien', nutriscore='d', url='pain.fr', calories='5', picture='pain.fr')
+        original_product_id = Product.objects.create(name='rien', nutriscore='d', url='pain.fr',
+                                                     calories='5', picture='pain.fr')
         response = c.get(f'/substitute/{product.pk}/{original_product_id.pk}')
         self.assertRedirects(response, f'/auth/login/?next=/substitute/{product.pk}/{original_product_id.pk}')
 
     def test_userfood_page(self):
-         c = Client()
-         c.login(email='test@gmail.com', password='test@.test')
-         response = c.get('/userfood/')
-         self.assertEqual(response.status_code, 200)
-         self.assertTemplateUsed(response, 'products/userfood.html')
 
+        """test about user's favorite product page success with login initialized information"""
+
+        c = Client()
+        c.login(email='test@gmail.com', password='test@.test')
+        response = c.get('/userfood/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'products/userfood.html')

@@ -1,21 +1,30 @@
+"""module returning the different views of the products application"""
+
+from django.db.models import Count, Q
+from django.db import IntegrityError
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
 from django.shortcuts import render
+from django.views.decorators.http import require_http_methods
 from products.forms import SearchProduct
 from products.models import Product
 from products.models import Substitute
-from django.views.decorators.http import require_http_methods
-from django.db.models import Count, Q
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect
-from django.contrib import messages
-from django.db import IntegrityError
 
 
 def home(request):
+
+    """class returning the home page"""
+
     return render(request, "products/home.html")
 
 
 @require_http_methods(['POST'])
 def search_product(request):
+
+    """method to search the product requested by the user and returns the corresponding information
+    return a list of object product or nothing"""
+
     form = SearchProduct(request.POST)
     if form.is_valid():
         product_user = form.cleaned_data
@@ -25,6 +34,10 @@ def search_product(request):
 
 
 def food(request, product_id):
+
+    """method to find the substitute of a product selected by the user
+    return a list of substitute or nothing"""
+
     product_detail = Product.objects.get(pk=product_id)
     substitutes = Product.objects.annotate(
         common_categories_nb=Count(
@@ -46,6 +59,10 @@ def food(request, product_id):
 
 @login_required
 def save_substitute(request, product_id, original_product_id):
+
+    """method to save the substitute of user in database
+        return the same template"""
+
     product = Product.objects.get(pk=product_id)
     try:
         Substitute.objects.create(product=product, user=request.user)
@@ -56,4 +73,8 @@ def save_substitute(request, product_id, original_product_id):
 
 
 def user_food(request):
+
+    """method to see the user food favorite product
+    return a template containing the user's substitute"""
+
     return render(request, "products/userfood.html")

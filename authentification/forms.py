@@ -1,9 +1,14 @@
+"""module containing the different authentication forms"""
+
+from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import get_user_model
-from django import forms
 
 
 class RegisterForm(UserCreationForm):
+
+    """"class to register"""
+
     email = forms.EmailField(label="Email")
     username = forms.CharField(label="Username")
     first_name = forms.CharField(label="First name")
@@ -15,4 +20,7 @@ class RegisterForm(UserCreationForm):
 
 
 class LoginForm(AuthenticationForm):
+
+    """class to connect"""
+
     username = forms.CharField(label='Email')

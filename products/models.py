@@ -1,8 +1,13 @@
+""""module with different class to create table in databse and object"""
+
 from django.db import models
 from authentification.models import User
 
 
 class Product(models.Model):
+
+    """"class to creat product"""
+
     name = models.CharField(max_length=100, unique=True)
     nutriscore = models.CharField(max_length=1)
     url = models.URLField(max_length=200)
@@ -14,6 +19,9 @@ class Product(models.Model):
 
 
 class Category(models.Model):
+
+    """"class to creat category"""
+
     name = models.CharField(max_length=100, unique=True)
     products = models.ManyToManyField(Product, through='CategoryProduct', related_name="categories")
 
@@ -22,11 +30,16 @@ class Category(models.Model):
 
 
 class CategoryProduct(models.Model):
+
+    """"relationship class between category and product"""
+
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
 
 class Substitute(models.Model):
+
+    """"relationship class between user and substitute in product search"""
 
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="substitute")

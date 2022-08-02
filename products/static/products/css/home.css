@@ -14,12 +14,14 @@
 
 .backgroundProduct {
         background-image: url("../assets/img/background/products.jpg") ;
-        background-size: cover;
+        background-size:cover;
+        background-position: center;
   }
 
 .backgroundUserfood {
     background-image: url("../assets/img/background/userfood.jpg") ;
-    background-size: auto;
+    background-size:cover;
+    background-position: center;
 }
 
 .text{
@@ -86,6 +88,7 @@ height: 150px;
 }
 .bas { font-family: "Scope One", sans-serif;
     text-align: center;
-    padding-bottom: 25px; }
+    padding-bottom: 25px;
+    padding-top: 25px;}
 
 #header { padding: 40px;}

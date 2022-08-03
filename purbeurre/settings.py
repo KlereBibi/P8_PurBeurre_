@@ -130,7 +130,6 @@ USE_TZ = True
 
 STATIC_URL = [os.path.join(BASE_DIR, 'static')]
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 STATIC_ROOT = [os.path.join(BASE_DIR, 'static')]
 
 # Default primary key field type
@@ -142,8 +141,5 @@ AUTH_USER_MODEL = "authentification.User"
 AUTHENTICATION_BACKENDS = ['authentification.backend.EmailBackend']
 LOGIN_URL = "authentification:login"
 LOGIN_REDIRECT_URL = "products:home"
-
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-MEDIA_URL = '/media/'
 
 django_heroku.settings(locals())

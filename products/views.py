@@ -78,3 +78,11 @@ def user_food(request):
     return a template containing the user's substitute"""
 
     return render(request, "products/userfood.html")
+
+
+def mentions_legales(request):
+
+    """method to see the mention legal used for this project"""
+
+    return render(request, "products/mentionlegale.html")
+

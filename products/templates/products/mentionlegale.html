@@ -1,15 +1,17 @@
 {% extends 'main.html' %}
 {% load static %}
 
+
 {% block add_css %}
 <link href="{% static 'products/css/home.css' %}" rel="stylesheet"/>
 {% endblock add_css %}
+
 
 {% block content %}
 <div>
     <div style="background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url('{% static 'products/assets/img/background/home_page.jpg' %}'); background-size:cover;">
         <div class="textMention ">
-            <p class="h6" >MENTIONS LÉGALES</p><br>
+            <p class="h6 border" >MENTIONS LÉGALES</p><br>
             <hr class="divider"/>
             Développé par : <a href="https://www.linkedin.com/in/claire-biedermann-b21671166/">Claire Biedermann </a></br>
             <hr class="divider"/>

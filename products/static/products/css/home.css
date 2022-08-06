@@ -31,6 +31,13 @@ font-family: "Open Sans", sans-serif;
 color:white;
 text-align: center}
 
+.text{
+padding-top: 5rem;
+padding-bottom: calc(10rem - 4.5rem);
+font-family: "Open Sans", sans-serif;
+color:white;
+text-align: center}
+
 .topright {
   position: absolute;
   top: 2%;

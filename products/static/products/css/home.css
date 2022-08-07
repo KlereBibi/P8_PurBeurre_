@@ -30,7 +30,7 @@ padding-bottom: calc(10rem - 4.5rem);
 font-family: "Open Sans", sans-serif;
 color:white;
 text-align: center;
-font-size: medium; }
+ }
 
 .textMention{
 padding-top: 5rem;
@@ -72,7 +72,7 @@ text-align: center}
 .textOFF {
 font-family: "Open Sans", sans-serif;
 text-align: center;
-font-size: medium;
+font-size: large;
 }
 
 .bordure {

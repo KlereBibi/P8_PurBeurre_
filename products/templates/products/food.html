@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<div class="bgcouleur header"></div>
+<div class="bgcouleur" id="header"></div>
 
 <div class="product">
     <div class="row" id="nameP">
@@ -63,11 +63,11 @@
            class="btn btn-primary">Sauvegarder </a>
     </div>
     {% endfor %}
-</div>
-{% else %}
-<div class="header text">
+    {% else %}
+<div class="p-5 bg-success text">
     Aucun substitut n'a été trouvé
 </div>
 {% endif %}
 
 {% endblock %}
+   </div>

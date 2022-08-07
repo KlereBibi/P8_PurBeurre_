@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 {% extends 'main.html' %}
 {% load static %}
 
@@ -15,18 +16,19 @@
     {% if products %}
     {% for product in products %}
     <div class="col-md-4">
-        <img class="card-img-top">
-        <div class="card text-black">
-            <img src="{{product.picture}}" alt="Card image cap" class="picture">
-            <div class="card-img-overlay">
-                <p class="card-text text-end">{{ product.nutriscore }}</p>
+        <div class="card-img-top">
+            <div class="card text-black">
+                <img src="{{product.picture}}" alt="Card image cap" class="picture">
+                <div class="card-img-overlay">
+                    <p class="card-text text-end">{{ product.nutriscore }}</p>
+                </div>
             </div>
+            <div class="card-body">
+                <p class="message">{{ product.name }}</p>
+            </div>
+            <a href="{% url 'products:food' product_id=product.id %}" class="btn btn-primary"> voir détail de
+                l'aliment </a>
         </div>
-        <div class="card-body">
-            <p class="message">{{ product.name }}</p>
-        </div>
-        <a href="{% url 'products:food' product_id=product.id %}" class="btn btn-primary"> voir détail de
-            l'aliment </a>
     </div>
     {% endfor %}
 </div>

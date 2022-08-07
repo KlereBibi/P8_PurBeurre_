@@ -18,7 +18,7 @@
     {% if user.substitute %}
     {% for substitute in user.substitute.all %}
     <div class="col-md-4">
-        <div class="card-img-top">
+        <img class="card-img-top">
             <div class="card text-black ">
                 <img src="{{substitute.product.picture}}" alt="Card image cap" class="picture">
                 <div class="card-img-overlay">
@@ -30,7 +30,7 @@
             </div>
             <a href="{% url 'products:food' product_id=substitute.id %}" class="btn btn-primary"> voir détail de
                 l'aliment </a>
-        </div>
+        </img>
     </div>
 </div>
 {% endfor %}

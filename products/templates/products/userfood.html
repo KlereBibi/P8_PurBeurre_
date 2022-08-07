@@ -11,29 +11,29 @@
 <div class="bgcouleur" id="header"></div>
 
 <div class="backgroundUserfood text">
-           <p> Mes substituts sauvegardés </p>
+    <p> Mes substituts sauvegardés </p>
 </div>
 
 <div class="row">
     {% if user.substitute %}
     {% for substitute in user.substitute.all %}
     <div class="col-md-4">
-        <img class="card-img-top">
-        <div class="card text-black ">
-            <img src="{{substitute.product.picture}}" alt="Card image cap" class="picture">
-            <div class="card-img-overlay">
-                <p class="card-text text-end">{{ substitute.product.nutriscore }}</p>
+        <div class="card-img-top">
+            <div class="card text-black ">
+                <img src="{{substitute.product.picture}}" alt="Card image cap" class="picture">
+                <div class="card-img-overlay">
+                    <p class="card-text text-end">{{ substitute.product.nutriscore }}</p>
+                </div>
             </div>
+            <div class="card-body">
+                <p class="message">{{ substitute.product.name }}</p>
+            </div>
+            <a href="{% url 'products:food' product_id=substitute.id %}" class="btn btn-primary"> voir détail de
+                l'aliment </a>
         </div>
-        <div class="card-body">
-            <p class="message">{{ substitute.product.name }}</p>
-        </div>
-        <a href="{% url 'products:food' product_id=substitute.id %}" class="btn btn-primary"> voir détail de
-            l'aliment </a>
     </div>
-
-    {% endfor %}
 </div>
+{% endfor %}
 {% else %}
 <p>Aucun substitut trouvé</p>
 {% endif %}

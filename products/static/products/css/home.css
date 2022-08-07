@@ -15,7 +15,7 @@
 .backgroundProduct {
         background-image: url("../assets/img/background/products.jpg");
          background-repeat:no-repeat;
-        background-size:contain;
+        background-size:cover;
         background-position:center;
         height: 120px;
         width: 20%;

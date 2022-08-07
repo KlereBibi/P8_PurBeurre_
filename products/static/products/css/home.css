@@ -14,7 +14,9 @@
 
 .backgroundProduct {
         background-image: url("../assets/img/background/products.jpg");
-        height:500px;
+        height:400px;
+        max-height:auto;
+        max-width: auto;
         background-size: cover;
   }
 

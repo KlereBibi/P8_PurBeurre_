@@ -16,22 +16,22 @@
     {% if products %}
     {% for product in products %}
     <div class="col-md-4">
-        <div class="card-img-top">
-            <div class="card text-black">
-                <img src="{{product.picture}}" alt="Card image cap" class="picture">
-                <div class="card-img-overlay">
-                    <p class="card-text text-end">{{ product.nutriscore }}</p>
-                </div>
+        <img class="card-img-top">
+        <div class="card text-black">
+            <img src="{{product.picture}}" alt="Card image cap" class="picture">
+            <div class="card-img-overlay">
+                <p class="card-text text-end">{{ product.nutriscore }}</p>
             </div>
-            <div class="card-body">
-                <p class="message">{{ product.name }}</p>
-            </div>
-            <a href="{% url 'products:food' product_id=product.id %}" class="btn btn-primary"> voir détail de
-                l'aliment </a>
         </div>
+        <div class="card-body">
+            <p class="message">{{ product.name }}</p>
+        </div>
+        <a href="{% url 'products:food' product_id=product.id %}" class="btn btn-primary"> voir détail de
+            l'aliment </a>
     </div>
-    {% endfor %}
 </div>
+{% endfor %}
+
 {% else %}
 <div class="p-5 textOFF" id="bgcolor">
     Aucun substitut n'a été trouvé

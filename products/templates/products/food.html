@@ -48,21 +48,20 @@
     {% if substitutes %}
     {% for substitute in substitutes %}
     <div class="col-md-4">
-        <div class="card-img-top">
-            <div class="card text-black ">
-                <img src="{{substitute.picture}}" alt="Card image cap" class="picture">
-                <div class="card-img-overlay">
-                    <p class="card-text text-end">{{ substitute.nutriscore }}</p>
-                </div>
+        <img class="card-img-top">
+        <div class="card text-black ">
+            <img src="{{substitute.picture}}" alt="Card image cap" class="picture">
+            <div class="card-img-overlay">
+                <p class="card-text text-end">{{ substitute.nutriscore }}</p>
             </div>
-            <div class="card-body">
-                <p class="message">{{ substitute.name }}</p>
-            </div>
-            <a href="{% url 'products:food' product_id=substitute.id %}" class="btn btn-primary"> voir détail de
-                l'aliment </a>
-            <a href="{% url 'products:save' product_id=substitute.id original_product_id=product.id %}"
-               class="btn btn-primary">Sauvegarder </a>
         </div>
+        <div class="card-body">
+            <p class="message">{{ substitute.name }}</p>
+        </div>
+        <a href="{% url 'products:food' product_id=substitute.id %}" class="btn btn-primary"> voir détail de
+            l'aliment </a>
+        <a href="{% url 'products:save' product_id=substitute.id original_product_id=product.id %}"
+           class="btn btn-primary">Sauvegarder </a>
     </div>
 </div>
 {% endfor %}

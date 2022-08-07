@@ -30,27 +30,27 @@
 </head>
 <body id="page-top">
 {% if messages %}
-    <div class="position-absolute end-0 top-0 z-index-fixed mt-3 me-3" id="mess">
-        {% for message in messages %}
-            <!-- Then put toasts within -->
-            <div class="toast fade show bg-light text-{{ message.tags }}"
-                 role="alert" aria-live="polite" data-bs-autohide="true" aria-atomic="true" data-bs-delay="1000">
-                <div class="toast-header text-{{ message.tags }} border-0">
-                    <i class="me-4 fa-light {% if message.tags == 'danger' %}fa-circle-exclamation{% elif message.tags == 'success' %}fa-circle-check{% elif message.tags == 'info' %}fa-square-info{% elif message.tags == 'warning' %}fa-triangle-exclamation{% endif %} flex-shrink-0 me-2"
-                       style="font-size: 1.2rem"></i>
-                    <strong class="me-auto">
-                        {% if message.tags == 'danger' %}Erreur{% elif message.tags == 'success' %}
-                            Succes{% endif %}</strong>
-                    <button type="button" class="btn-close btn-close" data-bs-dismiss="toast"
-                            aria-label="Close">
-                    </button>
-                </div>
-                <div class="toast-body">
-                    {{ message }}
-                </div>
-            </div>
-        {% endfor %}
+<div class="position-absolute end-0 top-0 z-index-fixed mt-3 me-3" id="mess">
+    {% for message in messages %}
+    <!-- Then put toasts within -->
+    <div class="toast fade show bg-light text-{{ message.tags }}"
+         role="alert" aria-live="polite" data-bs-autohide="true" aria-atomic="true" data-bs-delay="1000">
+        <div class="toast-header text-{{ message.tags }} border-0">
+            <i class="me-4 fa-light {% if message.tags == 'danger' %}fa-circle-exclamation{% elif message.tags == 'success' %}fa-circle-check{% elif message.tags == 'info' %}fa-square-info{% elif message.tags == 'warning' %}fa-triangle-exclamation{% endif %} flex-shrink-0 me-2"
+               style="font-size: 1.2rem"></i>
+            <strong class="me-auto">
+                {% if message.tags == 'danger' %}Erreur{% elif message.tags == 'success' %}
+                Succes{% endif %}</strong>
+            <button type="button" class="btn-close btn-close" data-bs-dismiss="toast"
+                    aria-label="Close">
+            </button>
+        </div>
+        <div class="toast-body">
+            {{ message }}
+        </div>
     </div>
+    {% endfor %}
+</div>
 {% endif %}
 <!-- Navigation-->
 
@@ -64,7 +64,8 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto my-2 my-lg-0">
                 <li class="nav-item">
-                    <form id="user-text-form" class="message pos col-6" method="POST" action="{% url 'products:search' %}">
+                    <form id="user-text-form" class="message pos col-6" method="POST"
+                          action="{% url 'products:search' %}">
                         {% csrf_token %}
                         {% bootstrap_form search_form layout='inline' %}
                         <input class="message btn btn-outline-warning my-2 my-sm-0 " type="submit" value="Chercher">
@@ -92,12 +93,20 @@
 {% block content %}{% endblock %}
 
 <!-- Footer-->
+<div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="small text-center text-muted"><a href="{% url 'products:mentions' %}">Mentions Légales</a></div>
+        </div>
+        <div class="col-md-6">
+            <div class="small text-center text-muted"><a href="{% url 'products:home'%}#lien">Contact</a></div>
+        </div>
+    </div>
+</div>
 
 <footer class="bg-light py-5">
     <div class="container px-4 px-lg-5">
         <div class="small text-center text-muted">Copyright &copy; 2022 - PurBeurre</div>
-        <div class="small text-center text-muted"> <a href="{% url 'products:mentions' %}">Mentions Légales</a></div>
-        <div class="small text-center text-muted"> <a href="{% url 'products:home'%}#lien">Contact</a></div>
     </div>
 </footer>
 

@@ -16,7 +16,7 @@
         background-image: url("../assets/img/background/products.jpg");
         background-size:cover;
         background-position:center;
-        height:100xp;
+        padding:40px
         width: 100%;
   }
 
@@ -24,6 +24,7 @@
     background-image: url("../assets/img/background/userfood.jpg") ;
     background-size:cover;
     background-position: center center;
+
 }
 
 .text{

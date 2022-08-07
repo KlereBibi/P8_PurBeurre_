@@ -16,19 +16,16 @@
         background-image: url("../assets/img/background/products.jpg");
         background-size: cover;
         background-position: center center;
-        background - attachment : fixed ;
+        padding:40px
   }
 
 .backgroundUserfood {
     background-image: url("../assets/img/background/userfood.jpg") ;
     background-size:cover;
-    background-position: center;
-    padding : 40xp
+    background-position: center center;
 }
 
 .text{
-padding-top: 10rem;
-padding-bottom: calc(10rem - 4.5rem);
 font-family: "Open Sans", sans-serif;
 color:white;
 text-align: center;

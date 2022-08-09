@@ -29,9 +29,8 @@
         <a href="{% url 'products:food' product_id=product.id %}" class="btn btn-primary"> voir détail de
             l'aliment </a>
     </div>
+    {% endfor %}
 </div>
-{% endfor %}
-
 {% else %}
 <div class="p-5 textOFF" id="bgcolor">
     Aucun substitut n'a été trouvé

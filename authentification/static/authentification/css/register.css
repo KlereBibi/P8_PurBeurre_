@@ -16,15 +16,14 @@ padding-top : 1%}
 .form-text {color:white}
 
 .background {
-  padding-top: 20rem;
-  padding-bottom: calc(20rem - 4.5rem);
   background-image: url("../assets/img/background/home_page.jpg") ;
   background-size: cover;
+  background-position: center center;
 }
 
 .text{
-        padding-top: 10rem;
-        padding-bottom: calc(10rem - 4.5rem);
+        padding-top: 15rem;
+        padding-bottom: calc(15rem - 4.5rem);
         font-family: "Open Sans", sans-serif;
         color:white;
         text-align: center

@@ -22,8 +22,8 @@ padding-top : 1%}
 }
 
 .text{
-        padding-top: 10rem;
-        padding-bottom: calc(20rem - 4.5rem);
+        padding-top: 15rem;
+        padding-bottom: calc(15rem - 4.5rem);
         font-family: "Open Sans", sans-serif;
         color:white;
         text-align: center;
@@ -40,8 +40,8 @@ padding-top : 1%}
 .backgroundMail { background-color: rgb(232, 167, 93)}
 
 .textMail{
-        padding-top: 15rem;
-        padding-bottom: calc(15rem - 4.5rem);
+        padding-top: 5rem;
+        padding-bottom: calc(25rem - 4.5rem);
         font-family: "Open Sans", sans-serif;
         color:white;
         text-align: center;

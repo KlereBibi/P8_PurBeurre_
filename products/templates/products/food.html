@@ -58,7 +58,7 @@
         <div class="card-body">
             <p class="message">{{ substitute.name }}</p>
         </div>
-        <a href="{% url 'products:food' product_id=substitute.id %}" class="btn btn-primary"> voir détail de
+        <a href="{{ substitute.url }}" class="btn btn-primary"> voir détail de
             l'aliment </a>
         <a href="{% url 'products:save' product_id=substitute.id original_product_id=product.id %}"
            class="btn btn-primary">Sauvegarder </a>

@@ -63,8 +63,8 @@
         <a href="{% url 'products:save' product_id=substitute.id original_product_id=product.id %}"
            class="btn btn-primary">Sauvegarder </a>
     </div>
+    {% endfor %}
 </div>
-{% endfor %}
 {% else %}
 <div class="p-5 textOFF" id="bgcolor">
     Aucun substitut n'a été trouvé

@@ -9,6 +9,7 @@
 Ce qu'il est requis pour commencer...
 
 * Python 3 *https://www.python.org/downloads/*
+* PostgreSQL *https://www.postgresql.org/download/*
 * Git *https://git-scm.com/downloads*
 * GitHub *https://github.com/*
 * Un éditeur de code (ici PyCharm est utilisé *https://www.jetbrains.com/pycharm/download/download-thanks.html*)

@@ -45,7 +45,3 @@ Toujours dans le terminal, initialisez votre environnement virtuel:
 ## Auteur
 
 Claire Biedermann
-
-
-## Auteur
-Claire Biedermann
